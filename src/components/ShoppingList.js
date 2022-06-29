@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Filter from "./Filter";
 import Item from "./Item";
+import ItemForm from "./ItemForm";
 
-function ShoppingList({ items }) {
+function ShoppingList({ items, onItemFormSubmit }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("")
 
@@ -22,10 +23,11 @@ function ShoppingList({ items }) {
     setSearchTerm(event.target.value);
   }
 
-  const itemsSearched = itemsToDisplay.filter((item) => item.name.includes(searchTerm))
+  const itemsSearched = itemsToDisplay.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
     <div className="ShoppingList">
+      <ItemForm onItemFormSubmit={onItemFormSubmit} />
       <Filter search={searchTerm} onSearchChange={handleSearchTermChange} onCategoryChange={handleCategoryChange} />
       <ul className="Items">
         {itemsSearched.map((item) => (

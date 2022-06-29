@@ -4,7 +4,7 @@ function Filter({ search, onSearchChange, onCategoryChange }) {
 
   return (
     <div className="Filter">
-      <input type="text" name="search" onChange={onSearchChange} value={search} placeholder="Search..." />ed
+      <input type="text" name="search" onChange={onSearchChange} value={search} placeholder="Search..." />
       <select name="filter" onChange={onCategoryChange} >
         <option value="All">Filter by category</option>
         <option value="Produce">Produce</option>
